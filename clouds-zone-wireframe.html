@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clouds Zone web Wireframe (USA)</title>
+<style>
+  :root{
+    --line:#9aa0a6;
+    --line-soft:#c7cbd1;
+    --box:#eef0f2;
+    --box-deep:#e2e5e9;
+    --text:#3c4045;
+    --text-soft:#787d84;
+    --accent:#6b6fce; /* nod to brand purple, kept muted for wireframe */
+    --page:#f7f8f9;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    color:var(--text);
+    background:var(--page);
+  }
+  .wf-label{
+    font-size:11px;
+    letter-spacing:.02em;
+    color:var(--text-soft);
+    margin:0 0 6px 0;
+  }
+  .wf-note{
+    font-size:11px;
+    color:var(--accent);
+    font-style:italic;
+  }
+  .frame{
+    max-width:1180px;
+    margin:0 auto;
+    border-left:1px dashed var(--line-soft);
+    border-right:1px dashed var(--line-soft);
+  }
+  .doc-title{
+    max-width:1180px;
+    margin:0 auto;
+    padding:28px 24px 10px;
+  }
+  .doc-title h1{
+    font-size:20px;
+    margin:0 0 4px;
+  }
+  .doc-title p{
+    font-size:13px;
+    color:var(--text-soft);
+    margin:0;
+    max-width:640px;
+    line-height:1.5;
+  }
+  section{
+    padding:22px 24px;
+    border-bottom:1px dashed var(--line-soft);
+  }
+  .box{
+    border:1px solid var(--line);
+    background:var(--box);
+    border-radius:2px;
+  }
+  .box-deep{
+    background:var(--box-deep);
+  }
+  .placeholder-img{
+    border:1px dashed var(--line);
+    background:repeating-linear-gradient(
+      45deg,
+      #e6e8eb,
+      #e6e8eb 8px,
+      #dde0e3 8px,
+      #dde0e3 16px
+    );
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--text-soft);
+    font-size:12px;
+    text-align:center;
+    border-radius:2px;
+  }
+  .bar{ height:14px; background:var(--box-deep); border:1px solid var(--line-soft); border-radius:2px;}
+  .bar.w80{width:80%;} .bar.w60{width:60%;} .bar.w40{width:40%;} .bar.w95{width:95%;} .bar.w30{width:30%;} .bar.w50{width:50%;}
+
+  /* HEADER */
+  header.section{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 24px;
+    background:#fff;
+  }
+  .logo-box{
+    display:flex; align-items:center; gap:10px;
+  }
+  .logo-mark{
+    width:38px;height:38px;border:1px solid var(--line);border-radius:6px;
+    display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--text-soft);
+    background:var(--box);
+  }
+  nav ul{ display:flex; gap:22px; list-style:none; margin:0; padding:0; }
+  nav ul li{ font-size:13px; color:var(--text); border-bottom:1px solid transparent; }
+  .cta-btn{
+    border:1px solid var(--text); border-radius:3px; padding:8px 16px; font-size:12px;
+    background:#fff;
+  }
+  .cta-btn.solid{ background:var(--accent); color:#fff; border-color:var(--accent);}
+
+  /* HERO */
+  .hero{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:36px;
+    align-items:center;
+    padding-top:48px;
+    padding-bottom:48px;
+  }
+  .hero-copy h2.bar{ height:22px; margin-bottom:10px;}
+  .hero-copy .bar{ margin-bottom:10px;}
+  .hero-ctas{ display:flex; gap:12px; margin-top:20px;}
+  .trust-row{
+    display:flex; gap:28px; margin-top:34px; flex-wrap:wrap;
+  }
+  .trust-item{ font-size:11px; color:var(--text-soft); display:flex; align-items:center; gap:6px;}
+  .dot{ width:6px;height:6px;border-radius:50%;background:var(--line);}
+
+  /* SERVICES GRID */
+  .grid-6{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:16px;
+    margin-top:16px;
+  }
+  .service-card{
+    padding:18px;
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .icon-square{
+    width:34px;height:34px;border:1px solid var(--line); border-radius:6px;
+    display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--text-soft);
+  }
+
+  /* ABOUT SPLIT */
+  .split{
+    display:grid;
+    grid-template-columns:.9fr 1.1fr;
+    gap:36px;
+    align-items:center;
+  }
+
+  /* PROCESS */
+  .process-row{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    margin-top:16px;
+  }
+  .step{ padding:16px; text-align:left; }
+  .step-num{
+    font-size:12px; color:var(--text-soft); border:1px solid var(--line-soft); border-radius:50%;
+    width:24px;height:24px;display:flex;align-items:center;justify-content:center; margin-bottom:10px;
+  }
+
+  /* TESTIMONIALS */
+  .testi-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-top:16px;
+  }
+  .testi-card{ padding:18px; }
+  .avatar-row{ display:flex; align-items:center; gap:10px; margin-top:14px;}
+  .avatar{ width:32px;height:32px;border-radius:50%;border:1px solid var(--line); background:var(--box-deep);}
+
+  /* CTA BANNER */
+  .cta-banner{
+    padding:40px 24px;
+    text-align:center;
+  }
+  .cta-banner .bar{ margin:0 auto 12px; }
+  .cta-banner .hero-ctas{ justify-content:center; }
+
+  /* FOOTER */
+  footer.section{
+    background:#fff;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;
+    gap:24px;
+  }
+  .footer-col .bar{ margin-bottom:10px;}
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top:28px; padding-top:16px; border-top:1px solid var(--line-soft);
+    font-size:11px; color:var(--text-soft);
+  }
+
+  .annot{
+    position:relative;
+  }
+  .annot::before{
+    content: attr(data-annot);
+    position:absolute;
+    top:-9px; left:12px;
+    background:var(--page);
+    padding:0 6px;
+    font-size:10px;
+    color:var(--accent);
+    letter-spacing:.02em;
+  }
+
+  @media (max-width: 860px){
+    .hero{ grid-template-columns:1fr; }
+    .grid-6{ grid-template-columns:repeat(2,1fr); }
+    .process-row{ grid-template-columns:repeat(2,1fr); }
+    .testi-row{ grid-template-columns:1fr; }
+    .footer-grid{ grid-template-columns:repeat(2,1fr); }
+    nav ul{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="doc-title">
+  <h1>CloudsZone  USA Wireframe</h1>
+  <p>hello</p>
+</div>
+
+<div class="frame">
+
+  <!-- HEADER -->
+  <header class="section annot" data-annot="HEADER / STICKY NAV">
+    <div class="logo-box">
+      <div class="logo-mark">CZ</div>
+      <div class="bar w60" style="width:110px;"></div>
+    </div>
+    <nav>
+      <ul>
+        <li>Services</li>
+        <li>Solutions</li>
+        <li>About</li>
+        <li>Case Studies</li>
+        <li>Contact</li>
+      </ul>
+    </nav>
+    <div style="display:flex; gap:10px;">
+      <div class="cta-btn">Log In</div>
+      <div class="cta-btn solid">Get a Free Quote</div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero annot" data-annot="HERO SECTION">
+    <div class="hero-copy">
+      <div class="bar w30" style="height:12px; margin-bottom:14px;"></div>
+      <div class="bar w95" style="height:26px;"></div>
+      <div class="bar w80" style="height:26px;"></div>
+      <div class="bar w60" style="margin-top:14px;"></div>
+      <div class="bar w50"></div>
+      <div class="hero-ctas">
+        <div class="cta-btn solid">Request a Consultation</div>
+        <div class="cta-btn">See  Services</div>
+      </div>
+      <div class="trust-row">
+        <div class="trust-item"><span class="dot"></span>Serving businesses for US</div>
+        <div class="trust-item"><span class="dot"></span>24/7 IT support</div>
+        <div class="trust-item"><span class="dot"></span>Smart home &amp; office automation</div>
+      </div>
+    </div>
+   <div style="height: 340px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 8px;">
+  <img src="c:\Users\almdl\Downloads\cloud.jpeg" alt="Hero Image" style="width: 100%; height: 100%; object-fit: cover;">
+</div>
+
+  <!-- LOGO / CLIENT STRIP -->
+  <section class="annot" data-annot="CLIENT / PARTNER LOGO STRIP" style="padding-top:26px; padding-bottom:26px;">
+    <div class="wf-label">TRUSTED BY TEAMS LIKE</div>
+    <div style="display:flex; gap:20px; margin-top:8px;">
+      <div class="box" style="width:110px;height:36px;"></div>
+      <div class="box" style="width:110px;height:36px;"></div>
+      <div class="box" style="width:110px;height:36px;"></div>
+      <div class="box" style="width:110px;height:36px;"></div>
+      <div class="box" style="width:110px;height:36px;"></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="annot" data-annot="SERVICES OVERVIEW — 6 CARDS FROM BRAND SHEET">
+    <div class="bar w40" style="height:12px;"></div>
+    <div class="bar w60" style="height:22px; margin-top:10px;"></div>
+    <div class="grid-6">
+      <div class="box service-card">
+        <div class="icon-square">icn</div>
+        <div class="bar w60"></div>
+        <div class="bar w95" style="height:10px;"></div>
+        <div class="bar w80" style="height:10px;"></div>
+        <div class="wf-note"> Solutions</div>
+      </div>
+      <div class="box service-card">
+        <div class="icon-square">icn</div>
+        <div class="bar w60"></div>
+        <div class="bar w95" style="height:10px;"></div>
+        <div class="bar w80" style="height:10px;"></div>
+        <div class="wf-note">Marketing</div>
+      </div>
+      <div class="box service-card">
+        <div class="icon-square">icn</div>
+        <div class="bar w60"></div>
+        <div class="bar w95" style="height:10px;"></div>
+        <div class="bar w80" style="height:10px;"></div>
+        <div class="wf-note">IT Services</div>
+      </div>
+      <div class="box service-card">
+        <div class="icon-square">icn</div>
+        <div class="bar w60"></div>
+        <div class="bar w95" style="height:10px;"></div>
+        <div class="bar w80" style="height:10px;"></div>
+        <div class="wf-note">Smart camera</div>
+      </div>
+      <div class="box service-card">
+        <div class="icon-square">icn</div>
+        <div class="bar w60"></div>
+        <div class="bar w95" style="height:10px;"></div>
+        <div class="bar w80" style="height:10px;"></div>
+        <div class="wf-note">Smart Home</div>
+      </div>
+      <div class="box service-card">
+        <div class="icon-square">icn</div>
+        <div class="bar w60"></div>
+        <div class="bar w95" style="height:10px;"></div>
+        <div class="bar w80" style="height:10px;"></div>
+        <div class="wf-note"> Smart Devices</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / WHY US -->
+  <section class="annot" data-annot="ABOUT / WHY CLOUDS ZONE">
+    <div class="split">
+      <img src="c:\Users\almdl\Downloads\clouds.jpeg" alt="Team Image" style="width: 100%; height: 100%; object-fit: cover;">
+      <div>
+        <div class="bar w30" style="height:12px; margin-bottom:12px;"></div>
+        <div class="bar w95" style="height:22px;"></div>
+        <div class="bar w80" style="height:22px; margin-bottom:14px;"></div>
+        <div class="bar w95" style="margin-bottom:8px;"></div>
+        <div class="bar w95" style="margin-bottom:8px;"></div>
+        <div class="bar w60" style="margin-bottom:18px;"></div>
+        <div style="display:flex; gap:26px;">
+          <div>
+            <div class="bar w40" style="height:20px;"></div>
+            <div class="bar w60" style="height:9px; margin-top:8px;"></div>
+          </div>
+          <div>
+            <div class="bar w40" style="height:20px;"></div>
+            <div class="bar w60" style="height:9px; margin-top:8px;"></div>
+          </div>
+          <div>
+            <div class="bar w40" style="height:20px;"></div>
+            <div class="bar w60" style="height:9px; margin-top:8px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="annot" data-annot="HOW IT WORKS — 4 STEP PROCESS">
+    <div class="bar w40" style="height:12px;"></div>
+    <div class="bar w50" style="height:22px; margin-top:10px;"></div>
+    <div class="process-row">
+      <div class="box step">
+        <div class="step-num">1</div>
+        <div class="bar w80"></div>
+        <div class="bar w95" style="height:9px; margin-top:8px;"></div>
+        <div class="bar w60" style="height:9px;"></div>
+      </div>
+      <div class="box step">
+        <div class="step-num">2</div>
+        <div class="bar w80"></div>
+        <div class="bar w95" style="height:9px; margin-top:8px;"></div>
+        <div class="bar w60" style="height:9px;"></div>
+      </div>
+      <div class="box step">
+        <div class="step-num">3</div>
+        <div class="bar w80"></div>
+        <div class="bar w95" style="height:9px; margin-top:8px;"></div>
+        <div class="bar w60" style="height:9px;"></div>
+      </div>
+      <div class="box step">
+        <div class="step-num">4</div>
+        <div class="bar w80"></div>
+        <div class="bar w95" style="height:9px; margin-top:8px;"></div>
+        <div class="bar w60" style="height:9px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="annot" data-annot="TESTIMONIALS / SOCIAL PROOF">
+    <div class="bar w30" style="height:12px;"></div>
+    <div class="bar w50" style="height:22px; margin-top:10px;"></div>
+    <div class="testi-row">
+      <div class="box testi-card">
+        <div class="bar w95" style="height:9px;"></div>
+        <div class="bar w95" style="height:9px; margin-top:6px;"></div>
+        <div class="bar w60" style="height:9px; margin-top:6px;"></div>
+        <div class="avatar-row">
+          <div class="avatar"></div>
+          <div>
+            <div class="bar w60" style="height:9px;"></div>
+            <div class="bar w40" style="height:8px; margin-top:5px;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="box testi-card">
+        <div class="bar w95" style="height:9px;"></div>
+        <div class="bar w95" style="height:9px; margin-top:6px;"></div>
+        <div class="bar w60" style="height:9px; margin-top:6px;"></div>
+        <div class="avatar-row">
+          <div class="avatar"></div>
+          <div>
+            <div class="bar w60" style="height:9px;"></div>
+            <div class="bar w40" style="height:8px; margin-top:5px;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="box testi-card">
+        <div class="bar w95" style="height:9px;"></div>
+        <div class="bar w95" style="height:9px; margin-top:6px;"></div>
+        <div class="bar w60" style="height:9px; margin-top:6px;"></div>
+        <div class="avatar-row">
+          <div class="avatar"></div>
+          <div>
+            <div class="bar w60" style="height:9px;"></div>
+            <div class="bar w40" style="height:8px; margin-top:5px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="box-deep cta-banner annot" data-annot="BOTTOM CTA BANNER">
+    <div class="bar w50" style="height:22px;"></div>
+    <div class="bar w40" style="height:12px; margin-bottom:20px;"></div>
+    <div class="hero-ctas">
+      <div class="cta-btn solid">Request</div>
+      <div class="cta-btn">Call (917) 508-4233</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="section annot" data-annot="FOOTER">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo-mark" style="margin-bottom:10px;">CZ</div>
+        <div class="bar w95" style="height:9px;"></div>
+        <div class="bar w80" style="height:9px; margin-top:6px;"></div>
+        <div class="bar w30" style="height:9px; margin-top:14px;"></div>
+      </div>
+      <div class="footer-col">
+        <div class="bar w40" style="height:10px;"></div>
+        <div class="bar w60" style="height:9px; margin-top:10px;"></div>
+        <div class="bar w60" style="height:9px; margin-top:8px;"></div>
+        <div class="bar w60" style="height:9px; margin-top:8px;"></div>
+      </div>
+      <div class="footer-col">
+        <div class="bar w40" style="height:10px;"></div>
+        <div class="bar w60" style="height:9px; margin-top:10px;"></div>
+        <div class="bar w60" style="height:9px; margin-top:8px;"></div>
+        <div class="bar w60" style="height:9px; margin-top:8px;"></div>
+      </div>
+      <div class="footer-col">
+        <div class="bar w40" style="height:10px;"></div>
+        <div class="bar w60" style="height:9px; margin-top:10px;"></div>
+        <div class="bar w60" style="height:9px; margin-top:8px;"></div>
+      </div>
+      <div class="footer-col">
+        <div class="bar w40" style="height:10px;"></div>
+        <div class="bar w80" style="height:9px; margin-top:10px;"></div>
+        <div class="bar w60" style="height:9px; margin-top:8px;"></div>
+        <div class="bar w60" style="height:9px; margin-top:8px;"></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Clouds Zone, USA</span>
+      <span>Privacy  · Terms of Service</span>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
